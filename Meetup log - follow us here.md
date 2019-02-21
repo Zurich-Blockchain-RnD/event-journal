@@ -1,3 +1,6 @@
+## 2019-02-16
+
+After taking a long break over the new year we had a couple of meetups at Digicomp which started hosting us before the years end. A management change made us look for alternatives once again and we're very glad we did. Thanks to our member Ilda, we formed a collaboration with Chainwork AG, a new major player in Zurich which will host us as part of their effort to hopefully lead part of the Swiss blockchain community. In order to scale our group, we transformed our repository into a GitHub organization which will allow teams to form per topic of interest and allow for cross collaboration between teams. Each team will own a repository which they will have control of. The general public will be able to collaborate with these teams as well by forking their repositories and creating pull requests. We will also be integrating as many aspects of the agile development method across our organization as possible so each team can collaborate effectively over whatever time period they choose and tackle tasks as their own chosen pace while maintaining progress. We will try to document as much of our research and development in our public GitHub repositories to benefit our other teams and the rest of the world. Slack will be used to communicate between teams while bots will update their threads with changes from GitHub and from the agile management system. That way the chats will give them a full overview of their project’s progress and a way to communicate and collaborate with everyone else. We’re very exited and are looking forward to implementing this new system across our evolving organization. We also posted our event on Eventbrite, created a LinkedIn group, a Twitter account and much more as we get ready to scale. Wish us luck and we hope to see you at our events or to collaborate with you remotely
 
 ## 2018-10-03
 
@@ -13,10 +16,10 @@ We'll try to add more comments beside the code to make the process more understa
 ## 2018-09-29
 
 As our meetups mature and our objectives become clearer, we're able to get down to coding much faster.
-First we took some time to discuss what we wanted to achieve in this session, then we separated into groups according to what participants preferred to tackle within the parameters we agreed on earlier.
+First, we took some time to discuss what we wanted to achieve in this session, then we separated into groups according to what participants preferred to tackle within the parameters we agreed on earlier.
 We were also very glad have a co-founder of the Corda blockchain project hang out with us during our session and tell us a bit about this very interesting new system.
 
-As we discussed in previous meetups, because payments are at the core of most blockchain services, we decided that an adequate first project would be a very simple full stack blockchain payment solution that has a user friendly UI for all participants.
+As we discussed in previous meetups, because payments are at the core of most blockchain services, we decided that an adequate first project would be a very simple full stack blockchain payment solution that has a user-friendly UI for all participants.
 While payments may seem like a relatively trivial issue, there are many aspects to take into consideration.
 
 How can the consumer trust the provider? 
@@ -42,17 +45,17 @@ If sufficient value is staked, as discussed in the first payment method, then th
 Payments that always require regulatory compliance, such as real estate deals, require the consent of several parties before they should be finalized.
 Lawyers, notaries, government offices and other participants, must approve the transfer of ownership of real estate properties. We can accommodate this by putting a 3rd party in charge of clearing the TX only once they verify that all the requirements, whatever they may be, have been satisfied. 
 
-Being able to accommodated within the same platform such a broad set of TX's is powerful!
-It basically means that we're creating a single platform that can process basic payments, as well as insured payments, and also payments that require legal compliance.
+Being able to accommodate within the same platform such a broad set of TX's is powerful!
+It basically means that we're creating a single platform that can process basic payments, as well as insured payments, and payments that require legal compliance.
 
 After agreeing on all of this we set out to start building it.
 We decided to split the teams into from and back end work.
 
-The front end team, led by Lucky, created the first drafts for the design of the payment app and they look excellent.
-The front end web UI was postponed until we figure out what elements we need to build.  
+The front-end team, led by Lucky, created the first drafts for the design of the payment app and they look excellent.
+The front-end web UI was postponed until we figure out what elements we need to build.  
 You can find them [here](https://github.com/RealizingBlockchain/Payment-Infrastructure/tree/master/frontend/mock-ups).
 
-The back end team, led by Dominik, decided that it's necessary to build first the smart contract in order to figure out how to construct the back end with the web3 elements that are needed to communicate with the Ethereum blockchain.
+The back-end team, led by Dominik, decided that it's necessary to build first the smart contract in order to figure out how to construct the back end with the web3 elements that are needed to communicate with the Ethereum blockchain.
 They ended up creating a skeleton contract that defined the functions and variables that the dApp would require to perform its task. Of course, this will change tremendously as we tackle solidity specifics as well as discover new efficient ways to perform our tasks as well as add all the extra features some of which I have discussed in later comments on the solidity code.
 You can find the history of this file [here](https://github.com/RealizingBlockchain/Payment-Infrastructure/commits/master/backend/contracts/payments.sol).
 
@@ -70,7 +73,7 @@ We agreed to create an escrow contract that routes a payment with an escrow that
 While this may sound trivial, here are some features to consider in the front and back ends.
 
 Back-end: 
-If the escrow fails to authorize the payment? The payment should probably be reversible by the client after a certain amount of blocks.
+If the escrow fails to authorize the payment? The payment should probably be reversible by the client after a certain number of blocks.
 
 Users at this point use their own wallets and interact with digital money. We can, to reduce exposure to volatility, convert fiat somehow on both edges or charge an extra margin from the buyer to compensate for market fluctuations.
 I know these are both ugly solutions, but while things are gradually getting better, that's the best we got my fellow blockchain devs 👍 
@@ -81,7 +84,7 @@ How do we implement that into the front end? Well, you know, it needs to be easy
 
 - The bigger picture:
 Depending on the type of transaction, the transacted amount, the provided service, legalities and the preferences of the interacting parties, we may want to use different payment models.
-Either the users preference, type of service, size of TX, regulatory or logical requirements of a TX would indicate to the contract what route the money would take.
+Either the user’s preference, type of service, size of TX, regulatory or logical requirements of a TX would indicate to the contract what route the money would take.
 We would need to create a UI as well to give convenient access to all interacting parties, including but not limited to the: service provider, consumer, escrow and oversight parties.
 
 Examples:
@@ -104,11 +107,11 @@ We can also create a dispute settling mechanism where a sum is entrusted with th
 
 Model 2: Buying a used car. Payment can have a time lock that both parties can agree on and settlement only goes to escrow in case a dispute is submitted by one of the interacting parties (could include the escrow). 
 
-Model 3: Buying a house. Payment can only be processed once all legal and regulatory obligations are fulfilled and therefor must be authorized by the escrow.
+Model 3: Buying a house. Payment can only be processed once all legal and regulatory obligations are fulfilled and therefore must be authorized by the escrow.
 
 
 Of course, some will insist that many of the escrow services can be automated.
-We are open to that and would like to implement those features, but those features add an incredible amount of complexity that we can't overcome at this point. We want to keep it simple and we want to build something that someone can actually use, whether it's complete, partially flawed or not. 
+We are open to that and would like to implement those features, but those features add an incredible amount of complexity that we can't overcome at this point. We want to keep it simple and we want to build something that someone can use, whether it's complete, partially flawed or not. 
 
 We also prefer to KYC all service providers and consumers on our platform to create a trusted environment and to keep things simple for now.
 
@@ -133,38 +136,38 @@ We found that comparing the parts that make up a blockchain to the parts that ma
 
 If this idea makes sense to you and you'd like to help develop it, you're most welcome to!
 
-[Computers VS Blockchains - Repo](https://github.com/RealizingBlockchain/Computers-VS-Blockchains/blob/master/README.md)
+[Computers VS Blockchains - Repo] (https://github.com/RealizingBlockchain/Computers-VS-Blockchains/blob/master/README.md)
 
  - what we can achieve during our early meetup session (real estate/payment smart contract)
 
 The idea of competing in blockchain related bounties and competitions is a very welcome idea by everyone as it helps to create momentum, practice, and unity where we need it most.
-The only draw-back with competitions is that they are fairly complex so we decided to chase smaller goals first so we don't risk loosing momentum in our group.
+The only draw-back with competitions is that they are fairly complex, so we decided to chase smaller goals first, so we don't risk losing momentum in our group.
 Our initial idea is to facilitate a C2B (client to business) transaction in the form of crypto for service while we act as the third party that insures there are no disputes by the end of the service.
 You can find a flow chart below that describes the flow of an MVP (minimal viable product) although I'll try to expand on the flow chart to explain what UI's need to be developed and when notifications of advancement are invoked and received.
-We basically want to put together all the parts that are needed to  facilitate such a transaction gracefully and securely and we are completely open minded about how the process should be constructed and are currently tending towards incorporating an escrow, which we will be until the contract and UI is ready to be used by unrelated parties.
+We basically want to put together all the parts that are needed to facilitate such a transaction gracefully and securely and we are completely open minded about how the process should be constructed and are currently tending towards incorporating an escrow, which we will be until the contract and UI is ready to be used by unrelated parties.
 We would need to create the solidity contract, build a UI for it, deploy it and use it, not as simple as it sounds..
 
- - we discussed possibilities for a long term plan of the meetup group (remote work, place where to meet etc.)
+ - we discussed possibilities for a long-term plan of the meetup group (remote work, place where to meet etc.)
 
 *We agreed that we would need to concentrate our effort and reduce energy losses in the overall structure of the group in order to be productive enough to survive the blockchain drought and even excel in it.
 
-*We took a comparison from the Tesla car company that I like to make where unlike an internal combustion engine that produces plenty of heat waste, battery powered cars loose a lot of range when they need to keep the batteries and cabin warm in cold weather. To reduce these losses, Tesla cars try to capture as much waste heat off moving and static parts as possible.
+*We took a comparison from the Tesla car company that I like to make where unlike an internal combustion engine that produces plenty of heat waste, battery powered cars lose a lot of range when they need to keep the batteries and cabin warm in cold weather. To reduce these losses, Tesla cars try to capture as much waste heat off moving and static parts as possible.
 At the end, we want to make sure that this group serves the people that join it and contribute to it, it is your group.
 
 *We will establish a core team and work to incorporate our members into it.
 This means that while the advanced and familiar group gets to focus on their work, joining members are helped by some of us to get up to speed so they can begin contributing to our development to the benefit of them and of all. (super poetic)
 
-*We will also concentrate our efforts around GitHub, again, so we don't loose efficiency because of a lack of collaboration and communication outside of the meetup itself or with those that cannot attend our meetups. Everyone's welcome to contribute to our repository.
+*We will also concentrate our efforts around GitHub, again, so we don't lose efficiency because of a lack of collaboration and communication outside of the meetup itself or with those that cannot attend our meetups. Everyone's welcome to contribute to our repository.
 
-*It's really important that we keep both the Wednesday and Saturday groups in sync so we don't loose energy there. 
+*It's really important that we keep both the Wednesday and Saturday groups in sync, so we don't lose energy there. 
 
- - how to be organized (Telegram "Zurich Blockchain Developers - Advanced", Slack, this github)
+ - how to be organized (Telegram "Zurich Blockchain Developers - Advanced", Slack, this GitHub)
 
 We're looking for the best chat tool to communicate with about the development in the repo, and we're currently mainly contemplating between Discord (many awesome features) and Slack (Threads for each message + awesome features).
 (Come on Discord, implement threads already, it's not proprietary and it will bring you a ton a business!), had to express my frustrations there.
 
  - We started to work on a Solidity smart contract to achieve payment transaction PoC for a Dentist who wants to accept crypto but used it mostly to teach solidity, so in-case you're looking for a correlation between the flow chart and smart contract and can't really find one, we need you in our group :)
-We prepared basic requirements + started writing a code, testing with Remix and Metamask.
+We prepared basic requirements + started writing a code, testing with Remix and MetaMask.
 
  - Here is a flow diagram of the simple transaction project. Changes can be done if you follow this [link](https://drive.google.com/file/d/1l2aGwEq_ixEq7JXabvmqeMyfT6elwQeo/view?usp=sharing)
 
